@@ -21,23 +21,41 @@
         ⚡ 输入股票代码（多个用英文逗号隔开），Agent 自动生成技术分析 + 新闻情绪 + 机构评级 + 操作建议
     </div>
 
-    <div class="input-row">
-        <input
-            id="tickerInput"
-            type="text"
-            placeholder="例如：AAPL,MSFT,NVDA,TSLA,GOOGL"
-            value="AAPL,MSFT,NVDA"
-        />
-        <button id="analyzeBtn">🔍 分析</button>
-    </div>
+ <!-- ===== 区域一：实时分析 ===== -->
+    <section class="section">
+        <h2 class="section-title">🔍 实时分析</h2>
+        <div class="input-row">
+            <input id="tickerInput" type="text" placeholder="例如：AAPL,MSFT,NVDA" value="AAPL,MSFT,NVDA" />
+            <button id="analyzeBtn">🔍 分析</button>
+        </div>
+        <div class="hint">💡 支持代码：<code>AAPL</code> <code>MSFT</code> <code>NVDA</code> <code>TSLA</code> <code>GOOGL</code> <code>AMZN</code> <code>META</code></div>
+        <div class="loading" id="loadingIndicator">⏳ Agent 正在分析…</div>
+        <div class="report-wrapper" id="reportContainer"></div>
+    </section>
+    <hr class="divider" />
+    <!-- ===== 区域二：日报配置 ===== -->
+    <section class="section">
+        <h2 class="section-title">📬 日报配置</h2>
+        <p class="section-desc">设置你关注的股票和推送时间，系统将每天自动发送日报到你的微信。</p>
 
-    <div class="hint">
-        💡 支持代码：<code>AAPL</code> <code>MSFT</code> <code>NVDA</code> <code>TSLA</code> <code>GOOGL</code> <code>AMZN</code> <code>META</code>
-    </div>
+        <div class="config-row">
+            <label for="configStocks">📋 关注股票（用英文逗号隔开）</label>
+            <input id="configStocks" type="text" placeholder="例如：AAPL,MSFT,NVDA" />
+        </div>
 
-    <div class="loading" id="loadingIndicator">⏳ Agent 正在分析，请稍候…（通常 5-15 秒）</div>
+        <div class="config-row">
+            <label for="configToken">🔑 微信推送 Token（从 pushplus.plus 获取）</label>
+            <input id="configToken" type="text" placeholder="输入你的 pushplus token" />
+        </div>
 
-    <div class="report-wrapper" id="reportContainer"></div>
+        <div class="config-row">
+            <label for="configTime">⏰ 推送时间</label>
+            <input id="configTime" type="time" value="08:00" />
+        </div>
+
+        <button id="saveConfigBtn">💾 保存配置</button>
+        <span id="configStatus" class="config-status"></span>
+    </section>
 
     <div class="footer">
         数据来源：yfinance · NewsAPI · 分析由阿里云 qwen-plus 驱动

@@ -164,3 +164,85 @@ h1 {
     border-top: 1px solid #eaeef2;
     padding-top: 24px;
 }
+
+/* ===== 分割线 ===== */
+.divider {
+    border: none;
+    border-top: 2px solid #eaeef2;
+    margin: 32px 0;
+}
+
+/* ===== 区域标题 ===== */
+.section-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.section-desc {
+    color: #57606a;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+/* ===== 配置表单 ===== */
+.config-row {
+    margin-bottom: 16px;
+}
+
+.config-row label {
+    display: block;
+    font-weight: 500;
+    font-size: 14px;
+    margin-bottom: 4px;
+    color: #1f2328;
+}
+
+.config-row input {
+    width: 100%;
+    padding: 10px 14px;
+    font-size: 15px;
+    border: 1.5px solid #d0d7de;
+    border-radius: 8px;
+    outline: none;
+    transition: border 0.2s;
+    background: #fafbfc;
+    box-sizing: border-box;
+}
+
+.config-row input:focus {
+    border-color: #2d7aff;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(45, 122, 255, 0.12);
+}
+
+#saveConfigBtn {
+    padding: 10px 28px;
+    font-size: 15px;
+    font-weight: 600;
+    background: #2da44e;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 4px;
+}
+
+#saveConfigBtn:hover {
+    background: #1c8139;
+}
+
+.config-status {
+    margin-left: 16px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.config-status.success {
+    color: #1a7f37;
+}
+
+.config-status.error {
+    color: #cf222e;
+}
