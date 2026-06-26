@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>📊 AI 股票分析助手</title>
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.1/github-markdown.min.css"
+    />
+    <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+<div class="container">
+    <h1>
+        📊 AI 股票分析助手
+        <span class="badge">v3</span>
+    </h1>
+    <div class="subtitle">
+        ⚡ 输入股票代码（多个用英文逗号隔开），Agent 自动生成技术分析 + 新闻情绪 + 机构评级 + 操作建议
+    </div>
+
+    <div class="input-row">
+        <input
+            id="tickerInput"
+            type="text"
+            placeholder="例如：AAPL,MSFT,NVDA,TSLA,GOOGL"
+            value="AAPL,MSFT,NVDA"
+        />
+        <button id="analyzeBtn">🔍 分析</button>
+    </div>
+
+    <div class="hint">
+        💡 支持代码：<code>AAPL</code> <code>MSFT</code> <code>NVDA</code> <code>TSLA</code> <code>GOOGL</code> <code>AMZN</code> <code>META</code>
+    </div>
+
+    <div class="loading" id="loadingIndicator">⏳ Agent 正在分析，请稍候…（通常 5-15 秒）</div>
+
+    <div class="report-wrapper" id="reportContainer"></div>
+
+    <div class="footer">
+        数据来源：yfinance · NewsAPI · 分析由阿里云 qwen-plus 驱动
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.0/marked.min.js">
+</script>
+<script src="/app.js"></script>
+</body>
+</html>
