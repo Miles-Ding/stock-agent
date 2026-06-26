@@ -1,3 +1,6 @@
+import os
+from dotenv import load_dotenv
+load_dotenv()
 import yfinance as yf   #雅虎的包，用来获取股票数据
 import requests  #作用是把消息打包成HTTP请求，发送到微信的接口上
 import pandas as pd
@@ -10,9 +13,15 @@ from langchain_openai import ChatOpenAI   #阿里云兼容OpenAI接口
 from langchain_core.tools import tool
 #-------------配置区---------------
 #自选股列表
-PUSH_TOKEN = "3b4d2d9e26e84bb5863fdf2900b7d4e8"
-ALIYUN_API_KEY  = "sk-a8bdab464a344484b4a49a953f96a502"
-NEWS_API_KEY = "09020dbae68049a2bb7118baa7e77605"
+ALIYUN_API_KEY = os.getenv("ALIYUN_API_KEY")
+NEWS_API_KEY = os.getenv("NEWS_API_KEY")
+PUSH_TOKEN = os.getenv("PUSH_TOKEN")
+if not ALIYUN_API_KEY:
+    raise ValueError("❌ ALIYUN_API_KEY 未设置，请检查 .env 文件")
+if not NEWS_API_KEY:
+    raise ValueError("❌ NEWS_API_KEY 未设置，请检查 .env 文件")
+if not PUSH_TOKEN:
+    raise ValueError("❌ PUSH_TOKEN 未设置，请检查 .env 文件")
 total_tokens = 0
 total_prompt_tokens = 0
 total_completion_tokens = 0
@@ -256,7 +265,9 @@ if __name__ == "__main__":
 - 你认为每只股票需要关注的信息（如果一切如常，这个指标就不用显示了）
 - 底部加上免责声明
 
-把日报发微信给我。
+重要指令：
+- 所有股票分析完成后，必须调用 send_wechat 工具推送日报。
+- 不允许在未推送的情况下结束任务。
 """
     
     result = app.invoke({"messages": [("user", user_input)]})
